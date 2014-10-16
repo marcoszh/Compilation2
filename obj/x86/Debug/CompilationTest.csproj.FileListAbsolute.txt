@@ -18,3 +18,6 @@ E:\BIANYI\shiyan2\MyCompilation\bin\Debug\WindowsApplication.exe
 E:\BIANYI\shiyan2\MyCompilation\bin\Debug\WindowsApplication.pdb
 E:\BIANYI\shiyan2\MyCompilation\obj\x86\Debug\WindowsApplication.exe
 E:\BIANYI\shiyan2\MyCompilation\obj\x86\Debug\WindowsApplication.pdb
+G:\github\Compilation2\bin\Debug\WindowsApplication.exe.config
+G:\github\Compilation2\obj\x86\Debug\WindowsApplication.exe
+G:\github\Compilation2\obj\x86\Debug\WindowsApplication.pdb
