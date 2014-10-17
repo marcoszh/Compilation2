@@ -33,10 +33,9 @@
             this.predictionListView = new System.Windows.Forms.ListView();
             this.NoColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LeftColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RightColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SelectColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FollowColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FirstColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.InputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NextColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.refreshButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,10 +61,8 @@
             this.predictionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NoColum,
             this.LeftColum,
-            this.RightColum,
-            this.SelectColum,
-            this.FollowColum,
-            this.FirstColum});
+            this.InputColum,
+            this.NextColum});
             this.predictionListView.GridLines = true;
             this.predictionListView.Location = new System.Drawing.Point(0, 14);
             this.predictionListView.Name = "predictionListView";
@@ -84,31 +81,32 @@
             this.LeftColum.Text = "Left";
             this.LeftColum.Width = 96;
             // 
-            // RightColum
+            // InputColum
             // 
-            this.RightColum.Text = "Right";
-            this.RightColum.Width = 128;
+            this.InputColum.Text = "Input";
+            this.InputColum.Width = 128;
             // 
-            // SelectColum
+            // NextColum
             // 
-            this.SelectColum.Text = "SELECT";
-            this.SelectColum.Width = 213;
+            this.NextColum.Text = "Next";
+            this.NextColum.Width = 542;
             // 
-            // FollowColum
+            // refreshButton
             // 
-            this.FollowColum.Text = "FOLLOW";
-            this.FollowColum.Width = 147;
-            // 
-            // FirstColum
-            // 
-            this.FirstColum.Text = "FIRST";
-            this.FirstColum.Width = 189;
+            this.refreshButton.Location = new System.Drawing.Point(677, 8);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(75, 23);
+            this.refreshButton.TabIndex = 2;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // STableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 348);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "STableForm";
@@ -126,9 +124,8 @@
         private System.Windows.Forms.ListView predictionListView;
         private System.Windows.Forms.ColumnHeader NoColum;
         private System.Windows.Forms.ColumnHeader LeftColum;
-        private System.Windows.Forms.ColumnHeader RightColum;
-        private System.Windows.Forms.ColumnHeader SelectColum;
-        private System.Windows.Forms.ColumnHeader FollowColum;
-        private System.Windows.Forms.ColumnHeader FirstColum;
+        private System.Windows.Forms.ColumnHeader InputColum;
+        private System.Windows.Forms.ColumnHeader NextColum;
+        private System.Windows.Forms.Button refreshButton;
     }
 }

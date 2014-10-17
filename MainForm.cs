@@ -133,6 +133,19 @@ namespace MyCompilation
 
             mParsing.charTNT();
 
+            Console.WriteLine("非终结符");
+            foreach(string s in mParsing.ntChars.Keys)
+            {
+                Console.Write(s+" , ");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("终结符");
+            foreach (string s in mParsing.tChars.Keys)
+            {
+                Console.Write(s+" , ");
+            }
+            Console.WriteLine("");
+
             foreach (string s in mParsing.tChars.Keys)
             {
                 mParsing.setTCharFirst(s);
@@ -158,6 +171,26 @@ namespace MyCompilation
                 mParsing.ntChars[s].First.Remove("$");
             }
 
+            foreach (string s in mParsing.tChars.Keys)
+            {
+                Console.Write("FIRST(" + s + ") = ");
+                foreach (string s1 in mParsing.tChars[s].First)
+                {
+                    Console.Write(s1+" , ");
+                }
+                Console.WriteLine("");
+            }
+
+            foreach (string s in mParsing.ntChars.Keys)
+            {
+                Console.Write("FIRST(" + s + ") = ");
+                foreach (string s1 in mParsing.ntChars[s].First)
+                {
+                    Console.Write(s1 + " , ");
+                }
+                Console.WriteLine("");
+            }
+
             mParsing.initFollow();
             mParsing.isChanged = true;
             while (mParsing.isChanged == true)
@@ -166,15 +199,39 @@ namespace MyCompilation
                 mParsing.addNTFollow();
             }
 
+            foreach (string s in mParsing.ntChars.Keys)
+            {
+                Console.Write("FOLLOW(" + s + ") = ");
+                foreach (string s1 in mParsing.ntChars[s].Follow)
+                {
+                    Console.Write(s1+" , ");
+                }
+                Console.WriteLine("");
+            }
+
             mParsing.setSelectForProduction();
+
+            foreach (Production production in mParsing.productions)
+            {
+                string temp = "";
+                foreach (string ss in production.Right)
+                    temp += (ss + " ");
+                Console.Write("SELECT(" + production.Left + "->" + temp + ") = ");
+                foreach (string s1 in production.Select)
+                {
+                    Console.Write(s1+" , ");
+                }
+                Console.WriteLine("");
+            }
 
             mParsing.setPredictionTable();
 
             mParsing.setSync();
             
 
-            stForm.tokens = myLexicalAnalysis.MyTokenList;
-            stForm.productions = mParsing.productions;
+            //stForm.tokens = myLexicalAnalysis.MyTokenList;
+            //stForm.productions = mParsing.productions;
+            stForm.predictionTable = mParsing.predictionTable;
             stForm.Show();
         }
 

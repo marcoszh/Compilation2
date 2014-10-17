@@ -12,78 +12,44 @@ namespace MyCompilation
 {
     public partial class STableForm : Form
     {
-        public ArrayList tokens = new ArrayList();
-        public ArrayList productions = new ArrayList();
+        //public ArrayList tokens = new ArrayList();
+        //public ArrayList productions = new ArrayList();
+        public Dictionary<string, Dictionary<string, ArrayList>> predictionTable;
         public STableForm()
         {
             InitializeComponent();
-            updateTable();
+            //updateTable();
         }
-
-        /*public void process()
-        {
-            mParsing.productions = CSUtility.readProductionFile("Grammar.txt");
-
-            mParsing.charTNT();
-
-            foreach (string s in mParsing.tChars.Keys)
-            {
-                mParsing.setTCharFirst(s);
-            }
-
-            foreach (string s in mParsing.ntChars.Keys)
-            {
-                mParsing.initNTCharFirst(s);
-            }
-
-            while (mParsing.isChanged == true)
-            {
-                mParsing.isChanged = false;
-                foreach (string s in mParsing.ntChars.Keys)
-                {
-                    mParsing.addNTCharFirst(s);
-                }
-            }
-
-            //去掉FIRST中的空串
-            foreach (string s in mParsing.ntChars.Keys)
-            {
-                mParsing.ntChars[s].First.Remove("$");
-            }
-
-            mParsing.initFollow();
-            mParsing.isChanged = true;
-            while (mParsing.isChanged == true)
-            {
-                mParsing.isChanged = false;
-                mParsing.addNTFollow();
-            }
-
-            mParsing.setSelectForProduction();
-
-            mParsing.setPredictionTable();
-
-            mParsing.setSync();
-        }*/
 
         public void updateTable()
         {
-            foreach (Production production in productions)
+            int i=1;
+            foreach (string s in predictionTable.Keys)
             {
-                foreach(string s in production.Right)
+                foreach (string s1 in predictionTable[s].Keys)
                 {
-                    ListViewItem productionItem = new ListViewItem(production.Left);
-                    productionItem.SubItems.Add(production.no.ToString());
-                    productionItem.SubItems.Add(production.Left);
-                    productionItem.SubItems.Add(s);
-                    string selectStr="";
-                    foreach (string s1 in production.Select)
-                        selectStr += (s1+" ");
-                    productionItem.SubItems.Add(selectStr);
-                    predictionListView.Items.Add(productionItem);
+                    ListViewItem item = new ListViewItem(i.ToString());
+                    //item.SubItems.Add(i.ToString());
+                    item.SubItems.Add(s);
+                    item.SubItems.Add(s1);
+
+                    string temp = "";
+                    foreach (string s2 in predictionTable[s][s1])
+                    {
+                        temp += (s2 + " ");
+                    }
+                    item.SubItems.Add(temp);
+                    predictionListView.Items.Add(item);
+                    i++;
                 }
             }
 
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            predictionListView.Items.Clear();
+            updateTable();
         }
     }
 }

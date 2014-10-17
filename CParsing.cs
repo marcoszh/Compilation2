@@ -254,7 +254,7 @@ namespace MyCompilation
                         continue;
                     if (i < len - 1)
                     {
-                        ArrayList rest = currentRight.GetRange(i+1, len-1);
+                        ArrayList rest = new ArrayList(currentRight.GetRange(i + 1, len-i-1));
                         ArrayList firstSetOfRest = getFirstSetOfChar(rest);
                         foreach (string s in firstSetOfRest)
                         {
@@ -405,17 +405,23 @@ namespace MyCompilation
                 {
                     foreach (string s in production.Select)
                     {
+                        ArrayList outs;
+                        if (predictionTable[production.Left].TryGetValue(s,out outs))
+                        {
+                            predictionTable[production.Left].Remove(s);
+                        }
+                         
                         predictionTable[production.Left].Add(s, production.Right);
                     }
                 }
                 else
                 {
-                    Dictionary<string, ArrayList> rowMap = new Dictionary<string, ArrayList>();
+                    Dictionary<string, ArrayList> rowDic = new Dictionary<string, ArrayList>();
                     foreach (string s in production.Select)
                     {
-                        rowMap.Add(s, production.Right);
+                        rowDic.Add(s, production.Right);
                     }
-                    predictionTable.Add(production.Left, rowMap);
+                    predictionTable.Add(production.Left, rowDic);
                 }
             }
         }
@@ -431,9 +437,14 @@ namespace MyCompilation
 
         public void process()
         {
-            productions = CSUtility.readProductionFile("Grammar.txt");
+            productions = CSUtility.readProductionFile("Grammer.txt");
 
             charTNT();
+
+            Console.WriteLine("非终结符");
+            Console.WriteLine(ntChars.Keys);
+            Console.WriteLine("终结符");
+            Console.WriteLine(tChars.Keys);
 
             foreach (string s in tChars.Keys)
             {
@@ -460,6 +471,18 @@ namespace MyCompilation
                 ntChars[s].First.Remove("$");
             }
 
+            foreach (string s in tChars.Keys)
+            {
+                Console.Write("FIRST("+s+") = ");
+                Console.WriteLine(tChars[s].First);
+            }
+
+            foreach (string s in ntChars.Keys)
+            {
+                Console.Write("FIRST(" + s + ") = ");
+                Console.WriteLine(tChars[s].First);
+            }
+
             initFollow();
             isChanged = true;
             while (isChanged == true)
@@ -468,7 +491,19 @@ namespace MyCompilation
                 addNTFollow();
             }
 
+            foreach (string s in ntChars.Keys)
+            {
+                Console.Write("FOLLOW(" + s + ") = ");
+                Console.WriteLine(ntChars[s].Follow);
+            }
+
             setSelectForProduction();
+
+            foreach (Production production in productions)
+            {
+                Console.Write("SELECT(" + production.Left + "->"+production.Right+ ") = ");
+                Console.WriteLine(production.Select);
+            }
 
             setPredictionTable();
 

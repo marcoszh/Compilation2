@@ -107,6 +107,12 @@ namespace MyCompilation
                                 oneRight.Add(s1);
                             }
                             productions.Add(new Production(i, left, oneRight));
+                            Console.Write(""+i+" "+left+"->");
+                            foreach(string s in oneRight)
+                            {
+                                Console.Write(s + ", ");
+                            }
+                            Console.WriteLine("");
                             i++;
                         }
                     }
@@ -119,6 +125,12 @@ namespace MyCompilation
                             oneRight.Add(temp);
                         }
                         productions.Add(new Production(i,left,oneRight));
+                        Console.Write("" + i + " " + left + "->");
+                        foreach (string s in oneRight)
+                        {
+                            Console.Write(s + ", ");
+                        }
+                        Console.WriteLine("");
                         i++;
                     }
                     line = sr.ReadLine();

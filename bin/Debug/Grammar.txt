@@ -16,8 +16,8 @@ pointer -> * @ $
 declarator -> IDENTIFIER declarator'
 declarator' -> [ CONST_INT ] declarator' @ $
 #标识符列表
-identifier_list -> IDENTIFIER identifier_list'
-identifier_list' -> , IDENTIFIER identifier_list' @ $ 
+#identifier_list -> IDENTIFIER identifier_list'
+#identifier_list' -> , IDENTIFIER identifier_list' @ $ 
 #参数列表 
 parameter_list -> parameter_declaration parameter_list'
 parameter_list' -> , parameter_declaration parameter_list' @ $
@@ -89,7 +89,7 @@ postfix_expression' -> [ expression ] postfix_expression' @ $
 postfix_expression' -> ( const_expression_list )
 #
 primary_expression -> IDENTIFIER @ const_expression @ ( expression )
-const_expression -> CONST_INT @ CONST_FLOAT @ CHAR* @ CHAR
+const_expression -> CONST_INT @ CONST_FLOAT @ CHAR
 #
 const_expression_list -> const_expression const_expression_list'
 const_expression_list' -> , const_expression const_expression_list' @ $
