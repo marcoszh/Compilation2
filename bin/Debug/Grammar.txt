@@ -56,12 +56,12 @@ expression' -> , assigment_expression expression' @ $
 #
 assigment_expression -> IDENTIFIER assigment_expression'' @ const_expression assigment_expression'
 assigment_expression'' -> assigment_expression' @ = logical_or_expression
-assigment_expression' -> > logical_or_expression @ < logical_or_expression @ >= logical_or_expression @ <= logical_or_expression @ == logical_or_expression @ != logical_or_expression @ AND_OP logical_or_expression @ OR_OP logical_or_expression @ + logical_or_expression @ - logical_or_expression @ / logical_or_expression @ * logical_or_expression @ % logical_or_expression @ $
+assigment_expression' -> > logical_or_expression @ < logical_or_expression @ >= logical_or_expression @ <= logical_or_expression @ == logical_or_expression @ != logical_or_expression @ & logical_or_expression @ | logical_or_expression @ + logical_or_expression @ - logical_or_expression @ / logical_or_expression @ * logical_or_expression @ % logical_or_expression @ $
 logical_or_expression -> logical_and_expression logical_or_expression'
-logical_or_expression' -> OR_OP logical_and_expression logical_or_expression' @ $
+logical_or_expression' -> | logical_and_expression logical_or_expression' @ $
 #逻辑和
 logical_and_expression -> equality_expression logical_and_expression'
-logical_and_expression' -> AND_OP equality_expression logical_and_expression' @ $
+logical_and_expression' -> & equality_expression logical_and_expression' @ $
 #等号相关
 equality_expression -> relational_expression equality_expression'
 equality_expression' -> == relational_expression equality_expression' @ $

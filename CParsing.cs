@@ -233,6 +233,7 @@ namespace MyCompilation
         //初始化FOLLOW集
         public void initFollow()
         {
+            //将句子的结束符加入
             Production p = (Production) productions[0];
             ntChars[p.Left].Follow.Add("#");
         }
@@ -250,8 +251,10 @@ namespace MyCompilation
                 for (int i = 0; i < len; i++)
                 {
                     string currentChar = (string)currentRight[i];
+                    //为终结符则不进行计算
                     if (isTChar(currentChar))
                         continue;
+
                     if (i < len - 1)
                     {
                         ArrayList rest = new ArrayList(currentRight.GetRange(i + 1, len-i-1));
@@ -356,6 +359,7 @@ namespace MyCompilation
             {
                 if ("$".Equals(production.Right[0]))
                 {
+                    //左侧的FOLLOW集
                     foreach (string s in ntChars[production.Left].Follow)
                     {
                         if (!production.Select.Contains(s))
@@ -426,7 +430,7 @@ namespace MyCompilation
             }
         }
 
-        //为非终结符设置同步记号
+        //为非终结符设置同步记号，用于错误恢复
         public void setSync()
         {
             foreach (string s in ntChars.Keys)
@@ -435,6 +439,7 @@ namespace MyCompilation
             }
         }
 
+        //进行操作，未使用
         public void process()
         {
             productions = CSUtility.readProductionFile("Grammer.txt");

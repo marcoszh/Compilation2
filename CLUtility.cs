@@ -113,7 +113,9 @@ namespace MyCompilation
         {
             return Array.IndexOf(OperatorChar, word);
         }
-        
+
+        #region 词法分析
+
         //判断字符串是否是定义的关键字
         public static bool IsKeyWord(string word)
         {
@@ -293,9 +295,10 @@ namespace MyCompilation
                 }
             }
             return true;
-                
-                    
+
+
         }
-        
+        #endregion
+
     }
 }

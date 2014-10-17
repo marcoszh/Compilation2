@@ -66,7 +66,7 @@
             this.predictionListView.GridLines = true;
             this.predictionListView.Location = new System.Drawing.Point(0, 14);
             this.predictionListView.Name = "predictionListView";
-            this.predictionListView.Size = new System.Drawing.Size(824, 304);
+            this.predictionListView.Size = new System.Drawing.Size(824, 294);
             this.predictionListView.TabIndex = 0;
             this.predictionListView.UseCompatibleStateImageBehavior = false;
             this.predictionListView.View = System.Windows.Forms.View.Details;
@@ -79,7 +79,7 @@
             // LeftColum
             // 
             this.LeftColum.Text = "Left";
-            this.LeftColum.Width = 96;
+            this.LeftColum.Width = 210;
             // 
             // InputColum
             // 

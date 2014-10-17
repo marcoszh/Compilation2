@@ -36,7 +36,7 @@ namespace MyCompilation
                     string temp = "";
                     foreach (string s2 in predictionTable[s][s1])
                     {
-                        temp += (s2 + " ");
+                        temp += ("["+s2 + "] ");
                     }
                     item.SubItems.Add(temp);
                     predictionListView.Items.Add(item);
