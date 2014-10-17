@@ -29,3 +29,4 @@ G:\github\Compilation2\obj\x86\Debug\MyCompilation.STableForm.resources
 G:\github\Compilation2\obj\x86\Debug\CompilationTest.csproj.GenerateResource.Cache
 G:\github\Compilation2\bin\Debug\WindowsApplication.exe
 G:\github\Compilation2\bin\Debug\WindowsApplication.pdb
+G:\github\Compilation2\obj\x86\Debug\MyCompilation.SResult.resources

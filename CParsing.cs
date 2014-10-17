@@ -439,80 +439,11 @@ namespace MyCompilation
             }
         }
 
-        //进行操作，未使用
-        public void process()
+        //进行LL1文法分析
+        public void LL1Analysis()
         {
-            productions = CSUtility.readProductionFile("Grammer.txt");
-
-            charTNT();
-
-            Console.WriteLine("非终结符");
-            Console.WriteLine(ntChars.Keys);
-            Console.WriteLine("终结符");
-            Console.WriteLine(tChars.Keys);
-
-            foreach (string s in tChars.Keys)
-            {
-                setTCharFirst(s);
-            }
-
-            foreach (string s in ntChars.Keys)
-            {
-                initNTCharFirst(s);
-            }
-
-            while (isChanged == true)
-            {
-                isChanged = false;
-                foreach (string s in ntChars.Keys)
-                {
-                    addNTCharFirst(s);
-                }
-            }
-
-            //去掉FIRST中的空串
-            foreach (string s in ntChars.Keys)
-            {
-                ntChars[s].First.Remove("$");
-            }
-
-            foreach (string s in tChars.Keys)
-            {
-                Console.Write("FIRST("+s+") = ");
-                Console.WriteLine(tChars[s].First);
-            }
-
-            foreach (string s in ntChars.Keys)
-            {
-                Console.Write("FIRST(" + s + ") = ");
-                Console.WriteLine(tChars[s].First);
-            }
-
-            initFollow();
-            isChanged = true;
-            while (isChanged == true)
-            {
-                isChanged = false;
-                addNTFollow();
-            }
-
-            foreach (string s in ntChars.Keys)
-            {
-                Console.Write("FOLLOW(" + s + ") = ");
-                Console.WriteLine(ntChars[s].Follow);
-            }
-
-            setSelectForProduction();
-
-            foreach (Production production in productions)
-            {
-                Console.Write("SELECT(" + production.Left + "->"+production.Right+ ") = ");
-                Console.WriteLine(production.Select);
-            }
-
-            setPredictionTable();
-
-            setSync();
+            SResult rForm = new SResult();
+            rForm.Show();
         }
 
     }

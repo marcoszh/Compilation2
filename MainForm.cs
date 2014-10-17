@@ -227,12 +227,18 @@ namespace MyCompilation
             mParsing.setPredictionTable();
 
             mParsing.setSync();
-            
-
+      
             //stForm.tokens = myLexicalAnalysis.MyTokenList;
             //stForm.productions = mParsing.productions;
             stForm.predictionTable = mParsing.predictionTable;
             stForm.Show();
+
+            mParsing.tokens = myLexicalAnalysis.MyTokenList;
+        }
+
+        private void SyntacticToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mParsing.LL1Analysis();
         }
 
 

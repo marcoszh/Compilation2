@@ -129,6 +129,7 @@
             this.SyntacticToolStripMenuItem.Name = "SyntacticToolStripMenuItem";
             this.SyntacticToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.SyntacticToolStripMenuItem.Text = "Syntactic Analysis";
+            this.SyntacticToolStripMenuItem.Click += new System.EventHandler(this.SyntacticToolStripMenuItem_Click);
             // 
             // panelToken
             // 
