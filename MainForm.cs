@@ -14,6 +14,7 @@ namespace MyCompilation
         string FilePath;
         CLexicalAnalysis myLexicalAnalysis = new CLexicalAnalysis();
         CParsing mParsing = new CParsing();
+        STableForm stForm = new STableForm();
         public MainForm()
         {
             InitializeComponent();
@@ -125,10 +126,55 @@ namespace MyCompilation
             //int lineNum = listViewError.SubItems(selected);
         }
 
+        //句法分析按钮被点击后进行的操作
         private void generateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            STableForm stForm = new STableForm();
+            mParsing.productions = CSUtility.readProductionFile("Grammar.txt");
+
+            mParsing.charTNT();
+
+            foreach (string s in mParsing.tChars.Keys)
+            {
+                mParsing.setTCharFirst(s);
+            }
+
+            foreach(string s in mParsing.ntChars.Keys)
+            {
+                mParsing.initNTCharFirst(s);
+            }
+
+            while (mParsing.isChanged == true)
+            {
+                mParsing.isChanged = false;
+                foreach (string s in mParsing.ntChars.Keys)
+                {
+                    mParsing.addNTCharFirst(s);
+                }
+            }
+
+            //去掉FIRST中的空串
+            foreach (string s in mParsing.ntChars.Keys)
+            {
+                mParsing.ntChars[s].First.Remove("$");
+            }
+
+            mParsing.initFollow();
+            mParsing.isChanged = true;
+            while (mParsing.isChanged == true)
+            {
+                mParsing.isChanged = false;
+                mParsing.addNTFollow();
+            }
+
+            mParsing.setSelectForProduction();
+
+            mParsing.setPredictionTable();
+
+            mParsing.setSync();
+            
+
             stForm.tokens = myLexicalAnalysis.MyTokenList;
+            stForm.productions = mParsing.productions;
             stForm.Show();
         }
 

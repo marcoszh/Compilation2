@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace MyCompilation
 {
@@ -70,7 +71,7 @@ namespace MyCompilation
     class CSUtility
     {
         //从文件读取文法产生式
-        public ArrayList readProductionFile(String path)
+        public static ArrayList readProductionFile(String path)
         {
             using (StreamReader sr = File.OpenText(path))
             {
@@ -88,14 +89,16 @@ namespace MyCompilation
                         continue;
                     }
                     
-                    string[] splits = line.Split(" -> ".ToCharArray());
+                    //string[] splits = line.Split(" -> ".ToCharArray());
+                    string[] splits = Regex.Split(line," -> ");
                     left = splits[0];
                     right = splits[1];
 
                     //右侧有多个候选式
                     if (right.Contains(" @ "))
                     {
-                        string[] rights = right.Split(" @ ".ToCharArray());
+                        //string[] rights = right.Split(" @ ".ToCharArray());
+                        string[] rights = Regex.Split(right, " @ ");
                         foreach (string temp in rights)
                         {
                             ArrayList oneRight = new ArrayList();
@@ -110,7 +113,8 @@ namespace MyCompilation
                     else
                     {
                         ArrayList oneRight = new ArrayList();
-                        foreach (string temp in right.Split(" ".ToCharArray()))
+                        //foreach (string temp in right.Split(" ".ToCharArray()))
+                        foreach(string temp in Regex.Split(right," "))
                         {
                             oneRight.Add(temp);
                         }

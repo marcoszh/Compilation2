@@ -1,6 +1,6 @@
 #程序主体 
 program -> external_declaration program'
-program' -> external_declaration program' | $
+program' -> external_declaration program' @ $
 #外部声明
 external_declaration -> function_definition
 #函数声明     
@@ -13,11 +13,11 @@ declarator_for_fun' -> ) @ parameter_list )
 #指针声明 
 pointer -> * @ $
 #声明主体 
-declarator -> IDENTIFIER declararor'
+declarator -> IDENTIFIER declarator'
 declarator' -> [ CONST_INT ] declarator' @ $
 #标识符列表
-identifier_list -> IDENTIFIER identifer_list'
-identifer_list' -> ,IDENTIFIER identifer_list' @ $ 
+identifier_list -> IDENTIFIER identifier_list'
+identifier_list' -> , IDENTIFIER identifier_list' @ $ 
 #参数列表 
 parameter_list -> parameter_declaration parameter_list'
 parameter_list' -> , parameter_declaration parameter_list' @ $
@@ -92,4 +92,4 @@ primary_expression -> IDENTIFIER @ const_expression @ ( expression )
 const_expression -> CONST_INT @ CONST_FLOAT @ CHAR* @ CHAR
 #
 const_expression_list -> const_expression const_expression_list'
-const_expression_list' -> , const_expression const_expression_list' | $
+const_expression_list' -> , const_expression const_expression_list' @ $

@@ -9,13 +9,15 @@ namespace MyCompilation
     class CParsing
     {
         //用于存储非终结符
-        public Dictionary<string, CNTChar> ntChars 
-            = new Dictionary<string,CNTChar>();
+        public Dictionary<string, CNTChar> ntChars
+            = new Dictionary<string, CNTChar>();
+
         //用于存储终结符
-        public Dictionary<string, CTChar> tChars 
+        public Dictionary<string, CTChar> tChars
             = new Dictionary<string, CTChar>();
+
         //用于存储产生式
-        public  ArrayList productions = new ArrayList();
+        public ArrayList productions = new ArrayList();
         //用于存储预测分析表
         public Dictionary<string, Dictionary<string, ArrayList>> predictionTable
             = new Dictionary<string, Dictionary<string, ArrayList>>();
@@ -25,7 +27,7 @@ namespace MyCompilation
 
         public ArrayList tokens = new ArrayList();
 
-        public static bool isChanged;
+        public bool isChanged = true;
 
         //对产生式进行分析将字符分类加到对应的列表中
         public void charTNT()
@@ -252,7 +254,7 @@ namespace MyCompilation
                         continue;
                     if (i < len - 1)
                     {
-                        ArrayList rest = currentRight.GetRange(i + 1, len);
+                        ArrayList rest = currentRight.GetRange(i+1, len-1);
                         ArrayList firstSetOfRest = getFirstSetOfChar(rest);
                         foreach (string s in firstSetOfRest)
                         {
@@ -425,6 +427,52 @@ namespace MyCompilation
             {
                 ntChars[s].generateSync();
             }
+        }
+
+        public void process()
+        {
+            productions = CSUtility.readProductionFile("Grammar.txt");
+
+            charTNT();
+
+            foreach (string s in tChars.Keys)
+            {
+                setTCharFirst(s);
+            }
+
+            foreach (string s in ntChars.Keys)
+            {
+                initNTCharFirst(s);
+            }
+
+            while (isChanged == true)
+            {
+                isChanged = false;
+                foreach (string s in ntChars.Keys)
+                {
+                    addNTCharFirst(s);
+                }
+            }
+
+            //去掉FIRST中的空串
+            foreach (string s in ntChars.Keys)
+            {
+                ntChars[s].First.Remove("$");
+            }
+
+            initFollow();
+            isChanged = true;
+            while (isChanged == true)
+            {
+                isChanged = false;
+                addNTFollow();
+            }
+
+            setSelectForProduction();
+
+            setPredictionTable();
+
+            setSync();
         }
 
     }

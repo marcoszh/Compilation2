@@ -1,6 +1,6 @@
 ﻿namespace MyCompilation
 {
-    partial class MainForm
+    public partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
