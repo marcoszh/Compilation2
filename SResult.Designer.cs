@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            //this.listView1 = new System.Windows.Forms.ListView();
-            this.listView1 = new DBListView();
+            this.listView1 = new MyCompilation.DBListView();
             this.NoColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -107,9 +106,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(378, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 12);
+            this.label1.Size = new System.Drawing.Size(137, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "LL(1)文法分析结果";
+            this.label1.Text = "LL(1) Analysis Results";
             // 
             // SResult
             // 
@@ -130,12 +129,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader NoColum;
         private System.Windows.Forms.ColumnHeader InputColum;
         private System.Windows.Forms.ColumnHeader OutputColum;
         private System.Windows.Forms.ColumnHeader TopColum;
         private System.Windows.Forms.ColumnHeader StackColum;
         private System.Windows.Forms.ColumnHeader lineColum;
+        private DBListView listView1;
     }
 }

@@ -450,21 +450,33 @@ namespace MyCompilation
             return temp;
         }
 
+        //输出token值
+        public void printTokens()
+        {
+            Console.WriteLine("Tokens:");
+            foreach (MyLexicalToken token in tokens)
+            {
+                Console.WriteLine("["+CLUtility.getTokenValue(token)+"]:"+token.Name);
+            }
+        }
+
         //进行LL1文法分析
         public void LL1Analysis(string root)
         {
             SResult rForm = new SResult();
             rForm.Show();
-            ArrayList proSq = new ArrayList();
+            printTokens();
+            //ArrayList proSq = new ArrayList();
             Stack<string> pdChars = new Stack<string>();
             pdChars.Push("#");
             pdChars.Push(root);
 
             int index = 0;
+            int No = 1;
             //未到结束
             while (!"#".Equals(pdChars.Peek()))
             {
-                int No = 1;
+                
                 //取栈顶
                 string X = pdChars.Peek();
                 MyLexicalToken a = new MyLexicalToken();
@@ -513,6 +525,7 @@ namespace MyCompilation
                         {
                             output += ("[" + s + "] ");
                         }
+                        Console.WriteLine("" + No +" "+CLUtility.getTokenValue(a)+" " +a.Name+" "+ output + pdChars.Count);
                         rForm.addListItem(No++, a.LineCount, a.Name, output, pdChars.Peek(), getStackString(pdChars));
                     }
                     else
