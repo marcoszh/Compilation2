@@ -252,8 +252,8 @@ namespace MyCompilation
             endToken.Others = "";
             endToken.Type = ElementType.None;
             mParsing.tokens.Add(endToken);
-            //mParsing.LL1Analysis(((Production)mParsing.productions[0]).Left);
-            mParsing.LL1Analysis("program");
+            mParsing.LL1Analysis(((Production)mParsing.productions[0]).Left);
+            //mParsing.LL1Analysis("program");
         }
 
 
