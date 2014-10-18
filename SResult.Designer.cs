@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.NoColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OutputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TopColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StackColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,15 +47,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(900, 356);
             this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(378, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "LL(1)文法分析结果";
             // 
             // listView1
             // 
@@ -76,22 +67,36 @@
             // NoColum
             // 
             this.NoColum.Text = "No.";
+            this.NoColum.Width = 25;
             // 
             // InputColum
             // 
             this.InputColum.Text = "Input";
+            this.InputColum.Width = 25;
             // 
             // OutputColum
             // 
             this.OutputColum.Text = "Output";
+            this.OutputColum.Width = 25;
             // 
             // TopColum
             // 
             this.TopColum.Text = "Stack Top";
+            this.TopColum.Width = 25;
             // 
             // StackColum
             // 
             this.StackColum.Text = "Stack";
+            this.StackColum.Width = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(378, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "LL(1)文法分析结果";
             // 
             // SResult
             // 

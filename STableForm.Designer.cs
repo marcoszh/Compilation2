@@ -74,22 +74,22 @@
             // NoColum
             // 
             this.NoColum.Text = "No.";
-            this.NoColum.Width = 37;
+            this.NoColum.Width = 25;
             // 
             // LeftColum
             // 
             this.LeftColum.Text = "Left";
-            this.LeftColum.Width = 210;
+            this.LeftColum.Width = 25;
             // 
             // InputColum
             // 
             this.InputColum.Text = "Input";
-            this.InputColum.Width = 128;
+            this.InputColum.Width = 25;
             // 
             // NextColum
             // 
             this.NextColum.Text = "Next";
-            this.NextColum.Width = 542;
+            this.NextColum.Width = 25;
             // 
             // refreshButton
             // 

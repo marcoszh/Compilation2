@@ -46,10 +46,19 @@ namespace MyCompilation
 
         }
 
+        public void setWidth()
+        {
+            this.NoColum.Width = -2;
+            this.NextColum.Width = -1;
+            this.InputColum.Width = -1;
+            this.LeftColum.Width = -1;
+        }
+
         private void refreshButton_Click(object sender, EventArgs e)
         {
             predictionListView.Items.Clear();
             updateTable();
+            setWidth();
         }
     }
 }
