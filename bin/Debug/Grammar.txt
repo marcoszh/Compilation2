@@ -36,6 +36,12 @@ init_declarator -> declarator init_declarator'
 init_declarator' -> $ @ = initializer
 #变量初始化
 initializer -> assigment_expression @ { const_expression_list }
+#赋值
+assigment_expression -> IDENTIFIER assigment_expression'' @ const_expression assigment_expression'
+assigment_expression'' -> assigment_expression' @ = logical_or_expression
+assigment_expression' -> > logical_or_expression @ < logical_or_expression @ >= logical_or_expression @ <= logical_or_expression @ == logical_or_expression @ != logical_or_expression @ & logical_or_expression @ | logical_or_expression @ + logical_or_expression @ - logical_or_expression @ / logical_or_expression @ * logical_or_expression @ % logical_or_expression @ $
+logical_or_expression -> logical_and_expression logical_or_expression'
+logical_or_expression' -> | logical_and_expression logical_or_expression' @ $
 #语句列表
 statement_list -> statement statement_list'
 statement_list' -> statement statement_list' @ $
@@ -53,12 +59,6 @@ jump_statement -> continue ; @ break ; @ return ; @ return expression ;
 #表达式 
 expression -> assigment_expression expression'
 expression' -> , assigment_expression expression' @ $
-#
-assigment_expression -> IDENTIFIER assigment_expression'' @ const_expression assigment_expression'
-assigment_expression'' -> assigment_expression' @ = logical_or_expression
-assigment_expression' -> > logical_or_expression @ < logical_or_expression @ >= logical_or_expression @ <= logical_or_expression @ == logical_or_expression @ != logical_or_expression @ & logical_or_expression @ | logical_or_expression @ + logical_or_expression @ - logical_or_expression @ / logical_or_expression @ * logical_or_expression @ % logical_or_expression @ $
-logical_or_expression -> logical_and_expression logical_or_expression'
-logical_or_expression' -> | logical_and_expression logical_or_expression' @ $
 #逻辑和
 logical_and_expression -> equality_expression logical_and_expression'
 logical_and_expression' -> & equality_expression logical_and_expression' @ $
@@ -89,7 +89,7 @@ postfix_expression' -> [ expression ] postfix_expression' @ $
 postfix_expression' -> ( const_expression_list )
 #
 primary_expression -> IDENTIFIER @ const_expression @ ( expression )
-const_expression -> CONST_INT @ CONST_FLOAT @ char
+const_expression -> CONST_INT @ CONST_FLOAT @ CONST_CHAR @ CONST_STRING
 #
 const_expression_list -> const_expression const_expression_list'
 const_expression_list' -> , const_expression const_expression_list' @ $

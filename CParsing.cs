@@ -497,8 +497,8 @@ namespace MyCompilation
                 {
                     //ArrayList item = predictionTable[X][CLUtility.getTokenValue(a)];
                     ArrayList item = new ArrayList();
-                    predictionTable[X].TryGetValue(CLUtility.getTokenValue(a),out item);
-                    if (item != null)
+                    //predictionTable[X].TryGetValue(CLUtility.getTokenValue(a),out item);
+                    if (predictionTable[X].TryGetValue(CLUtility.getTokenValue(a), out item))
                     {
                         pdChars.Pop();
                         if (!"$".Equals(item[0]))

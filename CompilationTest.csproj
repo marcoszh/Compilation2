@@ -52,6 +52,9 @@
     <Compile Include="CLexicalAnalysis.cs" />
     <Compile Include="CParsing.cs" />
     <Compile Include="CSUtility.cs" />
+    <Compile Include="DBListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

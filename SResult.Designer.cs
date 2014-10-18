@@ -29,24 +29,26 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            //this.listView1 = new System.Windows.Forms.ListView();
+            this.listView1 = new DBListView();
             this.NoColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OutputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TopColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StackColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();          
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.listView1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(900, 356);
+            this.panel1.Size = new System.Drawing.Size(900, 359);
             this.panel1.TabIndex = 0;
             // 
             // listView1
@@ -70,6 +72,11 @@
             // 
             this.NoColum.Text = "No.";
             this.NoColum.Width = 54;
+            // 
+            // lineColum
+            // 
+            this.lineColum.DisplayIndex = 5;
+            this.lineColum.Text = "Line";
             // 
             // InputColum
             // 
@@ -104,11 +111,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "LL(1)文法分析结果";
             // 
-            // lineColum
-            // 
-            this.lineColum.DisplayIndex = 5;
-            this.lineColum.Text = "Line";
-            // 
             // SResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -120,6 +122,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -332,6 +332,21 @@ namespace MyCompilation
                 else
                     return false;
             }
+            else if (s.Equals("CONST_CHAR"))
+            {
+                if (token.Type == ElementType.Char)
+                    return true;
+                else
+                    return false;
+            }
+            else if (s.Equals("CONST_STRING"))
+            {
+                if (token.Type == ElementType.String)
+                    return true;
+                else
+                    return false;
+
+            }
             return false;
         }
         //获得token的值
@@ -344,6 +359,10 @@ namespace MyCompilation
                 return "CONST_INT";
             else if (token.Type == ElementType.Float)
                 return "CONST_INT";
+            else if (token.Type == ElementType.String)
+                return "CONST_STRING";
+            else if (token.Type == ElementType.Char)
+                return "CONST_CHAR";
             else
                 return token.Name;
         }
