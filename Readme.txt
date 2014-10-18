@@ -2,3 +2,4 @@
 首先读入文件，在Tools中选择词法分析获得Token序列
 再选择Tools中的第二项生成词法分析表（界面会卡住，懒成狗大计算量操作没开线程），Grammar文件在bin/debug里有
 再选择Tools中的LL1文法分析，输出分法分析结果（依旧懒成狗，卡卡卡）
+（严重参考了https://github.com/liushuaikobe 的代码，致谢）
