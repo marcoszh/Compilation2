@@ -23,11 +23,13 @@ namespace MyCompilation
             this.OutputColum.Width = -1;
             this.TopColum.Width = -1;
             this.StackColum.Width = -1;
+            this.lineColum.Width = -2;
         }
 
-        public void addListItem(int No, string input, string output, string top, string stack)
+        public void addListItem(int No,int line, string input, string output, string top, string stack)
         {
             ListViewItem item = new ListViewItem(No.ToString());
+            item.SubItems.Add(line.ToString());
             item.SubItems.Add(input);
             item.SubItems.Add(output);
             item.SubItems.Add(top);

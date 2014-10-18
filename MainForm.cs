@@ -87,6 +87,7 @@ namespace MyCompilation
                    
                 }
 
+
                 //添加SymbolList序列
                 foreach (MyLexicalSymbol theSymbol in myLexicalAnalysis.MyLexicalSymbolList)
                 {
@@ -233,12 +234,24 @@ namespace MyCompilation
             stForm.predictionTable = mParsing.predictionTable;
             stForm.Show();
 
-            mParsing.tokens = myLexicalAnalysis.MyTokenList;
+            //mParsing.tokens = myLexicalAnalysis.MyTokenList;
+            
         }
 
         private void SyntacticToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mParsing.LL1Analysis();
+            foreach (MyLexicalToken token in myLexicalAnalysis.MyTokenList)
+            {
+                mParsing.tokens.Add(token);
+            }
+            MyLexicalToken endToken = new MyLexicalToken();
+            endToken.Code = -1;
+            endToken.LineCount = -1;
+            endToken.Name = "#";
+            endToken.Others = "";
+            endToken.Type = ElementType.None;
+            mParsing.tokens.Add(endToken);
+            mParsing.LL1Analysis(((Production)mParsing.productions[0]).Left);
         }
 
 

@@ -439,11 +439,100 @@ namespace MyCompilation
             }
         }
 
+        //生成stack内的字符串
+        public string getStackString(Stack<string> pdChars)
+        {
+            string temp = "";
+            foreach (string s in pdChars)
+            {
+                temp +=("["+s+"] ");
+            }
+            return temp;
+        }
+
         //进行LL1文法分析
-        public void LL1Analysis()
+        public void LL1Analysis(string root)
         {
             SResult rForm = new SResult();
             rForm.Show();
+            ArrayList proSq = new ArrayList();
+            Stack<string> pdChars = new Stack<string>();
+            pdChars.Push("#");
+            pdChars.Push(root);
+
+            int index = 0;
+            //未到结束
+            while (!"#".Equals(pdChars.Peek()))
+            {
+                int No = 1;
+                //取栈顶
+                string X = pdChars.Peek();
+                MyLexicalToken a = new MyLexicalToken();
+                //当前输入符号
+                if (index < tokens.Count)
+                {
+                    a = (MyLexicalToken) tokens[index];
+                }
+
+                //终结符或#
+                if (isTChar(X) || "#".Equals(X))
+                {
+                    if (CLUtility.isEqualTT(a, X))
+                    {
+                        //弹出并前移指针
+                        if (!"#".Equals(X))
+                        {
+                            pdChars.Pop();
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        string errorStr = pdChars.Pop();
+                        errorStr = "ERROR: Ignore the input [" + errorStr + "]";
+                        rForm.addListItem(No++, a.LineCount, a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
+                    }
+                }
+                else
+                {
+                    //ArrayList item = predictionTable[X][CLUtility.getTokenValue(a)];
+                    ArrayList item = new ArrayList();
+                    predictionTable[X].TryGetValue(CLUtility.getTokenValue(a),out item);
+                    if (item != null)
+                    {
+                        pdChars.Pop();
+                        if (!"$".Equals(item[0]))
+                        {
+                            for (int i = item.Count-1; i > -1; i--)
+                            {
+                                pdChars.Push((string)item[i]);
+                            }
+                        }
+                        string output = "[" + X + "] -> ";
+                        foreach (string s in item)
+                        {
+                            output += ("[" + s + "] ");
+                        }
+                        rForm.addListItem(No++, a.LineCount, a.Name, output, pdChars.Peek(), getStackString(pdChars));
+                    }
+                    else
+                    {
+                        if (ntChars[X].Sync.Contains(a))
+                        {
+                            string errorStr = pdChars.Pop();
+                            errorStr = "ERROR: Poped non-terminal char: [" + errorStr + "]";
+                            rForm.addListItem(No++, a.LineCount, a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
+                        }
+                        else
+                        {
+                            string errorStr = pdChars.Pop();
+                            errorStr = "ERROR: Ignore the input [" + errorStr + "]";
+                            rForm.addListItem(No++, a.LineCount, a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
+                        }
+                    }
+                }
+
+            }
         }
 
     }

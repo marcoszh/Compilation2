@@ -31,11 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.NoColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lineColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OutputColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TopColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StackColum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();          
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NoColum,
+            this.lineColum,
             this.InputColum,
             this.OutputColum,
             this.TopColum,
@@ -67,27 +69,31 @@
             // NoColum
             // 
             this.NoColum.Text = "No.";
-            this.NoColum.Width = 25;
+            this.NoColum.Width = 54;
             // 
             // InputColum
             // 
+            this.InputColum.DisplayIndex = 1;
             this.InputColum.Text = "Input";
-            this.InputColum.Width = 25;
+            this.InputColum.Width = 93;
             // 
             // OutputColum
             // 
+            this.OutputColum.DisplayIndex = 2;
             this.OutputColum.Text = "Output";
-            this.OutputColum.Width = 25;
+            this.OutputColum.Width = 50;
             // 
             // TopColum
             // 
+            this.TopColum.DisplayIndex = 3;
             this.TopColum.Text = "Stack Top";
-            this.TopColum.Width = 25;
+            this.TopColum.Width = 90;
             // 
             // StackColum
             // 
+            this.StackColum.DisplayIndex = 4;
             this.StackColum.Text = "Stack";
-            this.StackColum.Width = 25;
+            this.StackColum.Width = 65;
             // 
             // label1
             // 
@@ -97,6 +103,11 @@
             this.label1.Size = new System.Drawing.Size(107, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "LL(1)文法分析结果";
+            // 
+            // lineColum
+            // 
+            this.lineColum.DisplayIndex = 5;
+            this.lineColum.Text = "Line";
             // 
             // SResult
             // 
@@ -122,5 +133,6 @@
         private System.Windows.Forms.ColumnHeader OutputColum;
         private System.Windows.Forms.ColumnHeader TopColum;
         private System.Windows.Forms.ColumnHeader StackColum;
+        private System.Windows.Forms.ColumnHeader lineColum;
     }
 }

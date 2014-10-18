@@ -300,5 +300,53 @@ namespace MyCompilation
         }
         #endregion
 
+        #region 句法分析
+        //判断token和值的关系
+        public static bool isEqualTT(MyLexicalToken token,string s)
+        {
+            if ("IDENTIFIER".Equals(s))
+            {
+                if(token.Type == ElementType.Identifier)
+                    return true;
+                else
+                    return false;
+            }
+            else if (IsKeyWord(s) || IsOperatorChar(s.ToCharArray()[0]) || IsSeparatorChar(s.ToCharArray()[0]))
+            {
+                if (s.Equals(token.Name))
+                    return true;
+                return false;
+            }
+            else if (s.Equals("CONST_INT"))
+            {
+                if (token.Type == ElementType.BiInteger || token.Type == ElementType.DecInteger 
+                    || token.Type == ElementType.HexInteger || token.Type == ElementType.OctInteger)
+                    return true;
+                else
+                    return false;
+            }
+            else if (s.Equals("CONST_FLOAT"))
+            {
+                if (token.Type == ElementType.Float)
+                    return true;
+                else
+                    return false;
+            }
+            return false;
+        }
+        //获得token的值
+        public static string getTokenValue(MyLexicalToken token)
+        {
+            if (token.Type == ElementType.Identifier)
+                return "IDENTIFIER";
+            else if (token.Type == ElementType.BiInteger || token.Type == ElementType.DecInteger
+                    || token.Type == ElementType.HexInteger || token.Type == ElementType.OctInteger)
+                return "CONST_INT";
+            else if (token.Type == ElementType.Float)
+                return "CONST_INT";
+            else
+                return token.Name;
+        }
+        #endregion
     }
 }

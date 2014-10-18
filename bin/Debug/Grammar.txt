@@ -6,7 +6,7 @@ external_declaration -> function_definition
 #函数声明     
 function_definition -> type_specifier pointer declarator_for_fun compound_statement
 #类型指定 
-type_specifier -> VOID @ CHAR @ INT @ FLOAT
+type_specifier -> void @ char @ int @ float
 #变量声明 
 declarator_for_fun -> IDENTIFIER ( declarator_for_fun'
 declarator_for_fun' -> ) @ parameter_list )
@@ -44,12 +44,12 @@ statement -> compound_statement @ expression_statement @ selection_statement @ i
 #普通语句 
 expression_statement -> ; @ expression ;
 #if else 结构 
-selection_statement -> IF ( expression ) statement selection_statement'
-selection_statement' -> $ @ ELSE statement
+selection_statement -> if ( expression ) statement selection_statement'
+selection_statement' -> $ @ else statement
 #循环结构 
-iteration_statement -> WHILE ( expression ) statement @ FOR ( expression_statement expression_statement expression ) statement
+iteration_statement -> while ( expression ) statement @ for ( expression_statement expression_statement expression ) statement
 #跳转语句 
-jump_statement -> CONTINUE ; @ BREAK ; @ RETURN ; @ RETURN expression ;
+jump_statement -> continue ; @ break ; @ return ; @ return expression ;
 #表达式 
 expression -> assigment_expression expression'
 expression' -> , assigment_expression expression' @ $
@@ -89,7 +89,7 @@ postfix_expression' -> [ expression ] postfix_expression' @ $
 postfix_expression' -> ( const_expression_list )
 #
 primary_expression -> IDENTIFIER @ const_expression @ ( expression )
-const_expression -> CONST_INT @ CONST_FLOAT @ CHAR
+const_expression -> CONST_INT @ CONST_FLOAT @ char
 #
 const_expression_list -> const_expression const_expression_list'
 const_expression_list' -> , const_expression const_expression_list' @ $
