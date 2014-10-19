@@ -43,6 +43,7 @@ namespace MyCompilation
                     Console.WriteLine(""+i+" "+s+" "+s1+" "+temp);
                     predictionListView.Items.Add(item);
                     i++;
+                    setWidth();
                 }
             }
 

@@ -127,7 +127,7 @@ namespace MyCompilation
             //int lineNum = listViewError.SubItems(selected);
         }
 
-        //句法分析按钮被点击后进行的操作
+        //生成预测分析表按钮被点击后进行的操作
         private void generateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mParsing.productions = CSUtility.readProductionFile("Grammar.txt");
@@ -233,6 +233,7 @@ namespace MyCompilation
             //stForm.productions = mParsing.productions;
             stForm.predictionTable = mParsing.predictionTable;
             stForm.Show();
+            //stForm.updateTable();
 
             //mParsing.tokens = myLexicalAnalysis.MyTokenList;
             
