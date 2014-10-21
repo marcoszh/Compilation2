@@ -474,6 +474,7 @@ namespace MyCompilation
             int index = 0;
             int No = 1;
             //未到结束
+            rForm.Update0();
             while (!"#".Equals(pdChars.Peek()))
             {
                 
@@ -546,6 +547,7 @@ namespace MyCompilation
                 }
 
             }
+            rForm.Update1();
         }
 
     }

@@ -38,5 +38,15 @@ namespace MyCompilation
             setWidth();
         }
 
+        public void Update0()
+        {
+            listView1.BeginUpdate();
+        }
+
+        public void Update1()
+        {
+            listView1.EndUpdate();
+        }
+
     }
 }

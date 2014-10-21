@@ -25,6 +25,7 @@ namespace MyCompilation
         {
             int i=1;
             Console.WriteLine("预测分析表");
+            predictionListView.BeginUpdate();
             foreach (string s in predictionTable.Keys)
             {
                 foreach (string s1 in predictionTable[s].Keys)
@@ -43,9 +44,10 @@ namespace MyCompilation
                     Console.WriteLine(""+i+" "+s+" "+s1+" "+temp);
                     predictionListView.Items.Add(item);
                     i++;
-                    setWidth();
+                    //setWidth();
                 }
             }
+            predictionListView.EndUpdate();
 
         }
 

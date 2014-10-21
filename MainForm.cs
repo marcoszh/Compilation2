@@ -233,7 +233,8 @@ namespace MyCompilation
             //stForm.productions = mParsing.productions;
             stForm.predictionTable = mParsing.predictionTable;
             stForm.Show();
-            //stForm.updateTable();
+            stForm.updateTable();
+            stForm.setWidth();
 
             //mParsing.tokens = myLexicalAnalysis.MyTokenList;
             

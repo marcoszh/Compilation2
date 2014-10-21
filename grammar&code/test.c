@@ -1,13 +1,13 @@
 int main()
 {
 	char * str = "ewbwbe";
-	int i = 9,b[3]={0,1,2},c,k,j;
-	float c = 99.9;
-	int i = 3 ;
+	int i = 0x5a,b[3]={0,1,2},c,k,j;
+	float c = 5.68;
+	int i =  075 ;
 	int k = 3 ;
 	for (i = 0; i < 3; i = i + 1)
 	{
-		k=k+5;
+		k=i*j+1;
 
 	}
 
