@@ -503,7 +503,7 @@ namespace MyCompilation
                     {
                         string errorStr = pdChars.Pop();
                         errorStr = "ERROR: Ignore the input [" + errorStr + "]";
-                        rForm.addListItem(No++, a.LineCount, a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
+                        rForm.addListItem(No++, a.LineCount, "ERROR "+a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
                     }
                 }
                 else
@@ -535,13 +535,13 @@ namespace MyCompilation
                         {
                             string errorStr = pdChars.Pop();
                             errorStr = "ERROR: Poped non-terminal char: [" + errorStr + "]";
-                            rForm.addListItem(No++, a.LineCount, a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
+                            rForm.addListItem(No++, a.LineCount, "ERROR " + a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
                         }
                         else
                         {
                             string errorStr = pdChars.Pop();
                             errorStr = "ERROR: Ignore the input [" + errorStr + "]";
-                            rForm.addListItem(No++, a.LineCount, a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
+                            rForm.addListItem(No++, a.LineCount, "ERROR " + a.Name, errorStr, pdChars.Peek(), getStackString(pdChars));
                         }
                     }
                 }
